@@ -1,0 +1,3070 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RE/MAX - Aquiraz-CE | Um pedaço da Prainha</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        /* Seção Hero */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            height: 55vh;
+            min-height: 450px;
+            max-height: 550px;
+        }
+
+        /* Barra Verde Superior */
+        .top-bar {
+            background: transparent;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            z-index: 100;
+            background-image: url('1.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .top-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 15%;
+            width: 70%;
+            height: 100%;
+            background-color: #6B7C3A;
+            z-index: 1;
+        }
+
+        .top-bar-logo {
+            position: absolute;
+            left: 17%;
+            z-index: 2;
+        }
+
+        .top-bar-logo .logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .top-bar-location {
+            position: absolute;
+            right: 20%;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 8px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        /* Conteúdo Principal */
+        .hero-content-wrapper {
+            display: grid;
+            grid-template-columns: 15% 35% 35% 15%;
+            flex: 1;
+            background-image: url('1.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Overlay Verde que cobre formulário e parte da imagem */
+        .hero-content-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 15%;
+            width: 35%;
+            height: 100%;
+            background: rgba(107, 124, 58, 0.88);
+            z-index: 1;
+        }
+
+        /* Lado Esquerdo - Formulário */
+        .form-container {
+            grid-column: 2 / 3;
+            background: transparent;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            z-index: 2;
+        }
+
+        .palm-decoration {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 160px;
+            height: auto;
+            opacity: 0.9;
+            z-index: 2;
+        }
+
+        .form-wrapper {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 330px;
+        }
+
+        .form-header {
+            background-color: #FF5542;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .form-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .form-box {
+            background: transparent;
+            padding: 20px 0;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            background: white;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: #FF5542;
+        }
+
+        .form-input.error {
+            border-color: #FF5542;
+        }
+
+        .error-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #FF5542;
+            font-size: 18px;
+        }
+
+        .phone-group {
+            position: relative;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #FF5542;
+            color: white;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #E63E2E;
+        }
+
+        .submit-btn:focus {
+            outline: none;
+        }
+
+        /* Hide mobile logo on desktop */
+        .mobile-logo-wrapper {
+            display: none;
+        }
+
+        /* Lado Direito - Imagem Hero */
+        .hero-image-container {
+            grid-column: 3 / 4;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            z-index: 2;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: transparent;
+        }
+
+        .hero-text {
+            color: white;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+            text-align: center;
+        }
+
+        .hero-text .highlight {
+            font-weight: 900;
+        }
+
+        .hero-subtext {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+            text-align: center;
+            margin-top: 10px;
+        }
+        }
+
+        /* Seção Sobre a Prainha */
+        .about-section {
+            background-color: #f5f5f5;
+            padding: 50px 60px;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 40% 60%;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .image-gallery {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            height: 350px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: absolute;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-top-left {
+            top: 40px;
+            left: 0;
+            width: 220px;
+            height: 150px;
+            z-index: 1;
+        }
+
+        .gallery-top-right {
+            top: 100px;
+            left: 170px;
+            width: 240px;
+            height: 140px;
+            z-index: 2;
+        }
+
+        .gallery-bottom {
+            top: 210px;
+            left: 0;
+            width: 220px;
+            height: 150px;
+            z-index: 1;
+        }
+
+        .about-content {
+            padding-left: 0;
+            padding-right: 0;
+            max-width: 100%;
+        }
+
+        .about-title {
+            font-size: 28px;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .title-highlight {
+            color: #6B7C3A;
+            font-weight: 700;
+        }
+
+        .about-text {
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .about-cta {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .about-cta strong {
+            color: #333;
+            font-weight: 700;
+        }
+
+        /* Decoração de Ondas */
+        .waves-decoration {
+            width: 100%;
+            max-width: 280px;
+            margin: -20px 0 -60px 10%;
+            text-align: left;
+            position: relative;
+            z-index: 10;
+        }
+
+        .waves-decoration img {
+            width: 100%;
+            height: auto;
+            opacity: 0.6;
+        }
+
+        /* ============================================= */
+        /* NOVAS SEÇÕES - Casa de Praia e O Paraíso */
+        /* ============================================= */
+
+        /* Seção Casa de Praia */
+        .beach-house-section {
+            background-color: #F0F3F5;
+            padding: 35px 60px;
+            position: relative;
+            overflow: visible;
+        }
+
+        .beach-house-container {
+            max-width: 850px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 58% 42%;
+            gap: 30px;
+            align-items: center;
+            position: relative;
+        }
+
+        .green-side-decoration {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-450px);
+            top: 0;
+            bottom: 0;
+            width: 35px;
+            background-color: #6B7C3A;
+        }
+
+        /* Carrossel de Imagens Esquerda */
+        .beach-carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            padding-left: 25px;
+        }
+
+        .beach-carousel-container {
+            flex: 1;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            aspect-ratio: 16 / 11;
+            max-height: 280px;
+            position: relative;
+        }
+
+        /* Decoração de Folha Direita - Beach */
+        .beach-leaf-decoration-right {
+            position: absolute;
+            right: 190px;
+            top: -35%;
+            transform: translateY(0);
+            width: 130px;
+            height: auto;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .beach-leaf-decoration-right img {
+            width: 100%;
+            height: auto;
+        }
+
+        .beach-carousel-track {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        .beach-carousel-slide {
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .beach-carousel-slide.active-beach-slide {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .beach-carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .beach-nav-btn {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border: none;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: #333;
+            z-index: 5;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .prev-beach {
+            left: 0;
+        }
+
+        .next-beach {
+            right: 0;
+        }
+
+        .beach-nav-btn:hover {
+            background-color: #f5f5f5;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .beach-nav-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Conteúdo de Texto Direita */
+        .beach-content {
+            padding-right: 15px;
+            position: relative;
+        }
+
+        .beach-title {
+            font-size: 22px;
+            line-height: 1.15;
+            color: #666;
+            font-weight: 300;
+            margin-bottom: 14px;
+        }
+
+        .beach-highlight {
+            color: #6B7C3A;
+            font-weight: 700;
+        }
+
+        .beach-description {
+            margin-bottom: 14px;
+        }
+
+        .beach-description p {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #666;
+            margin-bottom: 9px;
+            text-align: justify;
+        }
+
+        .leaf-decoration {
+            position: absolute;
+            bottom: -20px;
+            right: 5px;
+            opacity: 0.08;
+        }
+
+        .leaf-decoration svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Seção O Paraíso */
+        .paradise-section {
+            background-color: #F0F3F5;
+            padding: 35px 60px;
+            position: relative;
+        }
+
+        .paradise-container {
+            max-width: 850px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 32% 68%;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .paradise-content {
+            padding-right: 15px;
+        }
+
+        .paradise-title {
+            font-size: 22px;
+            line-height: 1.2;
+            color: #666;
+            font-weight: 300;
+            max-width: 280px;
+        }
+
+        .paradise-highlight {
+            color: #6B7C3A;
+            font-weight: 600;
+        }
+
+        /* Carrossel Paraíso */
+        .paradise-carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .paradise-carousel-container {
+            flex: 1;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            aspect-ratio: 16 / 11;
+            max-height: 280px;
+            position: relative;
+        }
+
+        .paradise-carousel-track {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        .paradise-carousel-slide {
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .paradise-carousel-slide.active-paradise-slide {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .paradise-carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .paradise-nav-btn {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border: none;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: #333;
+            z-index: 5;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .prev-paradise {
+            left: 0;
+        }
+
+        .next-paradise {
+            right: 0;
+        }
+
+        .paradise-nav-btn:hover {
+            background-color: #f5f5f5;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .paradise-nav-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ============================================= */
+        /* FIM DAS NOVAS SEÇÕES */
+        /* ============================================= */
+
+        /* Seção de Vídeo */
+        .video-section {
+            background-color: #ffffff;
+            padding: 60px 60px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wave-decoration-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .wave-decoration-top img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.15;
+        }
+
+        .wave-decoration-bottom {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .wave-decoration-bottom img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.15;
+            transform: rotate(180deg);
+        }
+
+        .video-container {
+            max-width: 650px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+
+        /* Seção Carrossel de Imagens */
+        .carousel-section {
+            background-color: #f5f5f5;
+            padding: 60px;
+            position: relative;
+            overflow: visible;
+        }
+
+        .carousel-section > div:first-of-type {
+            display: grid;
+            grid-template-columns: 35% 65%;
+            gap: 40px;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto 80px;
+        }
+
+        .carousel-header {
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .carousel-title {
+            font-size: 28px;
+            line-height: 1.3;
+            color: #666;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .title-green {
+            color: #6B7C3A;
+            font-weight: 700;
+        }
+
+        .carousel-navigation {
+            display: flex;
+            gap: 15px;
+        }
+
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+
+        .carousel-btn:hover {
+            border-color: #6B7C3A;
+            background-color: #6B7C3A;
+            color: white;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 15px;
+        }
+
+        .carousel-slide {
+            min-width: 450px;
+            height: 300px;
+            flex-shrink: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .palm-decoration-right {
+            position: absolute;
+            bottom: 50px;
+            right: 0;
+            width: 300px;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .palm-decoration-right img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Seção Carrossel Invertido */
+        .carousel-section-reverse {
+            background-color: transparent;
+            padding: 0;
+            position: relative;
+            overflow: visible;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            gap: 40px;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .green-decoration-left {
+            position: absolute;
+            left: -60px;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            background-color: #6B7C3A;
+        }
+
+        .carousel-content-wrapper {
+            display: contents;
+        }
+
+        .carousel-text-content {
+            padding-left: 20px;
+        }
+
+        .carousel-title-reverse {
+            font-size: 28px;
+            line-height: 1.3;
+            color: #666;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .title-green-bold {
+            color: #6B7C3A;
+            font-weight: 700;
+        }
+
+        .carousel-description p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .carousel-images-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        .carousel-nav-btn {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: #666;
+            z-index: 5;
+        }
+
+        .carousel-nav-btn:hover {
+            border-color: #6B7C3A;
+            background-color: #6B7C3A;
+            color: white;
+        }
+
+        .carousel-image-wrapper {
+            flex: 1;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .carousel-track-reverse {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide-reverse {
+            min-width: 100%;
+            height: 450px;
+            flex-shrink: 0;
+        }
+
+        .carousel-slide-reverse img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .palm-decoration-right-bottom {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 250px;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .palm-decoration-right-bottom img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Seção Nossas Acomodações */
+        .accommodations-section {
+            background-color: #ffffff;
+            padding: 60px 60px;
+        }
+
+        .accommodations-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .accommodations-subtitle {
+            color: #6B7C3A;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .accommodations-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .accommodations-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 35px;
+            max-width: 100%;
+        }
+
+        .accommodations-carousel {
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .accommodations-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .accommodations-slide {
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .accommodations-slide.active-slide {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .accommodations-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Accordion */
+        .accordion-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            transition: all 0.3s ease;
+            margin-bottom: 0;
+            margin-top: 25px;
+        }
+
+        .accordion-item:hover {
+            border-color: #ccc;
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 20px 25px;
+            background: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            text-align: left;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #fafafa;
+        }
+
+        .accordion-icon {
+            flex-shrink: 0;
+        }
+
+        .accordion-header span {
+            flex: 1;
+        }
+
+        .accordion-chevron {
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+            color: #666;
+        }
+
+        .accordion-item.active .accordion-chevron {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 25px;
+            background: white;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            padding: 25px;
+        }
+
+        .amenities-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .amenities-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .amenities-list li svg {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Seção Cobertura */
+        .cobertura-section {
+            background-color: #ffffff;
+            padding: 60px 60px;
+        }
+
+        .cobertura-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cobertura-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .cobertura-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 35px;
+            max-width: 100%;
+        }
+
+        .cobertura-description em {
+            font-style: italic;
+            color: #555;
+        }
+
+        .cobertura-carousel {
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .cobertura-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .cobertura-slide {
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .cobertura-slide.active-cobertura-slide {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .cobertura-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Seção Piso Superior */
+        .piso-superior-section {
+            background-color: #ffffff;
+            padding: 60px 60px;
+        }
+
+        .piso-superior-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .piso-superior-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .piso-superior-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 35px;
+            max-width: 100%;
+        }
+
+        .piso-superior-carousel {
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .piso-superior-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .piso-superior-slide {
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .piso-superior-slide.active-piso-slide {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .piso-superior-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Seção Térreo */
+        .terreo-section {
+            background-color: #ffffff;
+            padding: 60px 60px;
+        }
+
+        .terreo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .terreo-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .terreo-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 35px;
+            max-width: 100%;
+        }
+
+        .terreo-carousel {
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .terreo-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .terreo-slide {
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .terreo-slide.active-terreo-slide {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .terreo-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Seção de Localização */
+        .location-section {
+            background-color: #f5f5f5;
+            padding: 100px 60px;
+        }
+
+        .location-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .location-title {
+            font-size: 52px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 50px;
+            letter-spacing: -1px;
+        }
+
+        .map-wrapper {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .map-wrapper iframe {
+            display: block;
+            width: 100%;
+        }
+
+        .address-info {
+            margin-bottom: 40px;
+        }
+
+        .address-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .address-text {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #B8A76F;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background-color: #A5956B;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(184, 167, 111, 0.4);
+        }
+
+        .social-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* Seção Final - Cadastre-se */
+        .final-cta-section {
+            background-color: #F0F3F5;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .final-cta-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            align-items: center;
+            min-height: 500px;
+            gap: 20px;
+        }
+
+        .final-form-wrapper {
+            padding: 60px 20px 60px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .final-cta-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #555;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            text-align: left;
+        }
+
+        .final-cta-subtitle {
+            font-size: 13px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: left;
+        }
+
+        .final-form {
+            margin-bottom: 35px;
+        }
+
+        .final-form-group {
+            margin-bottom: 12px;
+        }
+
+        .final-input {
+            width: 100%;
+            max-width: 100%;
+            padding: 12px 18px;
+            border: 1px solid #ccc;
+            background: white;
+            font-size: 14px;
+            color: #666;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .final-input::placeholder {
+            color: #999;
+        }
+
+        .final-input:focus {
+            border-color: #7A8450;
+        }
+
+        .final-submit-btn {
+            width: 100%;
+            max-width: 100%;
+            padding: 12px;
+            background-color: #7A8450;
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 8px;
+        }
+
+        .final-submit-btn:hover {
+            background-color: #6A7340;
+        }
+
+        .broker-info {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .broker-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #555;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        .broker-creci {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        .broker-image-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 0;
+        }
+
+        .broker-image {
+            max-width: 110%;
+            height: auto;
+            display: block;
+            max-height: 520px;
+            object-fit: contain;
+        }
+
+        .final-footer {
+            background-color: #7A8450;
+            padding: 20px 40px;
+            text-align: center;
+        }
+
+        .final-footer p {
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        /* Rodapé Final */
+        .main-footer {
+            background-color: #ffffff;
+            padding: 60px 40px 40px;
+        }
+
+        .footer-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo-img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .footer-info {
+            margin-bottom: 30px;
+        }
+
+        .footer-company-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .footer-address {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .footer-divider {
+            width: 100%;
+            max-width: 600px;
+            height: 2px;
+            background-color: #2C8B9E;
+            margin: 30px auto;
+        }
+
+        .footer-copyright {
+            margin-bottom: 20px;
+        }
+
+        .footer-copyright p {
+            font-size: 14px;
+            color: #888;
+            font-style: italic;
+        }
+
+        .footer-privacy {
+            margin-top: 20px;
+        }
+
+        .privacy-link {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #4DB8A8;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .privacy-link:hover {
+            background-color: #3DA896;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(77, 184, 168, 0.3);
+        }
+
+        /* Botão Flutuante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 40px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #20BA5A;
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+        }
+
+        /* Responsivo */
+        @media (max-width: 1024px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .form-container {
+                min-height: 100vh;
+            }
+
+            .hero-image-container {
+                min-height: 60vh;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .beach-house-section,
+            .paradise-section {
+                padding: 25px 30px;
+            }
+
+            .beach-house-container,
+            .paradise-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .beach-carousel-wrapper {
+                padding-left: 0;
+            }
+
+            .green-side-decoration {
+                transform: translateX(-50%);
+                left: 30px;
+                width: 30px;
+            }
+
+            .beach-title,
+            .paradise-title {
+                font-size: 18px;
+            }
+
+            .beach-carousel-container,
+            .paradise-carousel-container {
+                max-height: 280px;
+            }
+
+            .beach-leaf-decoration-right {
+                width: 100px;
+                right: 30px;
+            }
+
+            .location-section {
+                padding: 80px 30px;
+            }
+
+            .location-title {
+                font-size: 42px;
+            }
+
+            .final-cta-container {
+                grid-template-columns: 1fr;
+            }
+
+            .final-form-wrapper {
+                padding: 60px 40px;
+            }
+
+            .broker-image-wrapper {
+                padding: 40px;
+            }
+
+            .broker-image {
+                max-height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* ========================================= */
+            /* NOVO DESIGN HERO MOBILE */
+            /* ========================================= */
+            
+            .hero-section {
+                display: flex;
+                flex-direction: column;
+                height: auto;
+                min-height: auto;
+                max-height: none;
+            }
+
+            .top-bar {
+                display: none !important;
+            }
+
+            .top-bar::before {
+                display: none !important;
+            }
+
+            .hero-content-wrapper {
+                display: flex;
+                flex-direction: column;
+                background: none;
+            }
+
+            .hero-content-wrapper::before {
+                display: none !important;
+            }
+
+            /* Seção 1: Imagem de fundo com logo e localização */
+            .hero-image-container {
+                order: 1;
+                position: relative;
+                display: flex !important;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 35vh;
+                height: auto;
+                width: 100%;
+                padding: 40px 20px;
+                background-image: url('1.png');
+                background-size: cover;
+                background-position: center;
+            }
+
+            .hero-image-container::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+                z-index: 1;
+            }
+
+            .hero-image {
+                display: none !important;
+            }
+
+            .hero-text-overlay {
+                position: relative;
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 0;
+                background: none;
+            }
+
+            /* Logo RE/MAX no topo */
+            .hero-text-overlay::before {
+                content: '';
+                display: block;
+                width: 150px;
+                height: 50px;
+                background-image: url('logo.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                margin-bottom: 20px;
+            }
+
+            .hero-text {
+                display: none !important;
+            }
+
+            .hero-subtext {
+                display: none !important;
+            }
+
+            /* Localização estilizada */
+            .hero-text-overlay::after {
+                content: 'AQUIRAZ-CE';
+                display: block;
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: 4px;
+                color: white;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                margin-top: 10px;
+            }
+
+            /* Seção 2: Texto inspiracional com fundo verde */
+            .form-container {
+                order: 2;
+                background: linear-gradient(135deg, #6B7C3A 0%, #8A9F4A 100%) !important;
+                padding: 50px 25px !important;
+                min-height: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .form-container::before {
+                content: '';
+                position: absolute;
+                top: -50px;
+                right: -50px;
+                width: 200px;
+                height: 200px;
+                background: rgba(255,255,255,0.05);
+                border-radius: 50%;
+                pointer-events: none;
+            }
+
+            .form-container::after {
+                content: '';
+                position: absolute;
+                bottom: -80px;
+                left: -80px;
+                width: 250px;
+                height: 250px;
+                background: rgba(255,255,255,0.03);
+                border-radius: 50%;
+                pointer-events: none;
+            }
+
+            .palm-decoration {
+                display: none !important;
+            }
+
+            .form-wrapper {
+                width: 100%;
+                max-width: 400px;
+                padding: 0;
+                position: relative;
+                z-index: 2;
+            }
+
+            .form-header {
+                background: none !important;
+                padding: 0 !important;
+                margin-bottom: 35px !important;
+            }
+
+            .form-header h2 {
+                display: none !important;
+            }
+
+            /* Texto inspiracional antes do formulário */
+            .form-header::before {
+                content: 'Um pedaço da Prainha que poucos conhecem, mas muitos sonham.';
+                display: block;
+                font-size: 22px;
+                font-weight: 300;
+                line-height: 1.4;
+                color: white;
+                text-align: center;
+                margin-bottom: 8px;
+            }
+
+            .form-header::after {
+                content: 'Casa com vista mar.';
+                display: block;
+                font-size: 26px;
+                font-weight: 700;
+                color: #F5E6C3;
+                text-align: center;
+                letter-spacing: 1px;
+            }
+
+            .form-box {
+                width: 100%;
+                background: rgba(255,255,255,0.95);
+                padding: 30px 25px;
+                border-radius: 16px;
+                box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            }
+
+            .form-group {
+                margin-bottom: 16px;
+            }
+
+            .form-input {
+                width: 100%;
+                font-size: 15px !important;
+                padding: 14px 18px !important;
+                border: 2px solid #e8e8e8 !important;
+                border-radius: 10px !important;
+                background: #fafafa !important;
+                color: #333 !important;
+                transition: all 0.3s ease;
+            }
+
+            .form-input:focus {
+                border-color: #6B7C3A !important;
+                background: white !important;
+                box-shadow: 0 0 0 4px rgba(107, 124, 58, 0.1);
+            }
+
+            .form-input::placeholder {
+                color: #999;
+                font-size: 15px;
+            }
+
+            .submit-btn {
+                width: 100%;
+                font-size: 16px !important;
+                padding: 16px !important;
+                background: linear-gradient(135deg, #FF5542 0%, #E63E2E 100%) !important;
+                color: white !important;
+                border: none !important;
+                outline: none !important;
+                font-weight: 700;
+                margin-top: 10px;
+                border-radius: 10px !important;
+                text-transform: none;
+                box-shadow: 0 6px 20px rgba(255, 85, 66, 0.35);
+                transition: all 0.3s ease;
+            }
+
+            .submit-btn:active {
+                transform: scale(0.98);
+                box-shadow: 0 3px 10px rgba(255, 85, 66, 0.3);
+            }
+
+            /* Esconder seção de logo mobile antiga */
+            .mobile-logo-wrapper {
+                display: none !important;
+            }
+
+            .palm-decoration {
+                display: none !important;
+            }
+
+            .about-section {
+                padding: 60px 30px;
+            }
+
+            .about-title {
+                font-size: 28px;
+            }
+
+            .beach-house-section,
+            .paradise-section {
+                padding: 20px 15px;
+            }
+
+            .beach-title,
+            .paradise-title {
+                font-size: 16px;
+            }
+
+            .beach-description p {
+                font-size: 11px;
+            }
+
+            .beach-carousel-container,
+            .paradise-carousel-container {
+                max-height: 250px;
+            }
+
+            .beach-nav-btn,
+            .paradise-nav-btn {
+                width: 28px;
+                height: 28px;
+                min-width: 28px;
+            }
+
+            .beach-nav-btn svg,
+            .paradise-nav-btn svg {
+                width: 12px;
+                height: 12px;
+            }
+
+            .green-side-decoration {
+                transform: translateX(-50%);
+                left: 15px;
+                width: 25px;
+                display: none !important;
+            }
+
+            .beach-leaf-decoration-right {
+                width: 80px;
+                right: 15px;
+                opacity: 0.3;
+            }
+
+            .location-section {
+                padding: 60px 20px;
+            }
+
+            .location-title {
+                font-size: 32px;
+            }
+
+            .final-form-wrapper {
+                padding: 40px 20px;
+            }
+
+            .final-cta-title {
+                font-size: 36px;
+            }
+
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Correção das imagens da galeria no mobile - SEM CORTES */
+        @media (max-width: 768px) {
+            /* Ajusta container da galeria */
+            .paradise-carousel,
+            .beach-carousel,
+            .accommodations-carousel,
+            .cobertura-carousel,
+            .piso-superior-carousel,
+            .terreo-carousel {
+                aspect-ratio: auto !important;
+                min-height: auto;
+                max-height: none;
+                background: transparent;
+                border-radius: 15px;
+                overflow: hidden;
+                margin: 0 20px;
+                padding: 0;
+                width: auto;
+            }
+
+            /* Imagens aparecem 100% sem corte */
+            .paradise-slide img,
+            .beach-slide img,
+            .accommodations-slide img,
+            .cobertura-slide img,
+            .piso-superior-slide img,
+            .terreo-slide img {
+                width: 100% !important;
+                height: auto !important;
+                max-height: 350px;
+                object-fit: cover !important;
+                object-position: center !important;
+                background: transparent;
+                display: block;
+                border-radius: 0;
+            }
+
+            /* Centraliza os slides */
+            .paradise-slide,
+            .beach-slide,
+            .accommodations-slide,
+            .cobertura-slide,
+            .piso-superior-slide,
+            .terreo-slide {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                min-height: auto;
+                border-radius: 0;
+                overflow: hidden;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Seção Hero com Formulário -->
+    <section class="hero-section">
+        <div class="top-bar">
+            <div class="top-bar-logo">
+                <img src="2.png" alt="RE/MAX Seu Imóvel" class="logo">
+            </div>
+            <div class="top-bar-location">AQUIRAZ-CE</div>
+        </div>
+
+        <div class="hero-content-wrapper">
+            <div class="form-container">
+                <img src="3.png" alt="" class="palm-decoration">
+
+                <div class="form-wrapper">
+                    <div class="form-header">
+                        <h2>Quer conhecer?<br>Cadastre-se</h2>
+                    </div>
+                    <form class="form-box" id="leadForm">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Nome" required>
+                        </div>
+                        <div class="form-group phone-group">
+                            <input type="tel" class="form-input" placeholder="* Telefone" required>
+                            <span class="error-icon" style="display: none;">⚠</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="* E-mail" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Enviar agora mesmo</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Logo RE/MAX below form (mobile only) -->
+            <div class="mobile-logo-wrapper">
+                <img src="2.png" alt="RE/MAX Seu Imóvel" class="mobile-logo">
+            </div>
+
+            <div class="hero-image-container">
+                <img src="4.jpg" alt="Casa na Prainha" class="hero-image">
+                <div class="hero-text-overlay">
+                    <h1 class="hero-text">
+                        Um pedaço da <span class="highlight">Prainha</span><br>
+                        que poucos conhecem,<br>
+                        <span class="highlight">mas muitos sonham.</span>
+                    </h1>
+                    <div class="hero-subtext">
+                        Casa com vista mar.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre a Prainha -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="image-gallery">
+                <div class="gallery-item gallery-top-left">
+                    <img src="5.jpeg" alt="Vista aérea da Prainha">
+                </div>
+                <div class="gallery-item gallery-top-right">
+                    <img src="6.jpeg" alt="Jangadas na praia">
+                </div>
+                <div class="gallery-item gallery-bottom">
+                    <img src="7.jpeg" alt="Praia com coqueiros">
+                </div>
+            </div>
+
+            <div class="about-content">
+                <h2 class="about-title">
+                    <span class="title-highlight">Viva a vida que você sempre sonhou</span><br>
+                    num lugar que você nunca imaginou
+                </h2>
+
+                <div class="about-text">
+                    <p>
+                        Aquela sensação de deixar distante o barulho, o movimento frenético da 
+                        cidade e entrar num ambiente tranquilo. Prainha é uma das mais belas 
+                        praias do litoral cearense, com águas cristalinas, natureza preservada e um 
+                        mar incrível.
+                    </p>
+                    <p>
+                        Vivenciar de pertinho e ter o privilégio de desfrutar desse conforto, 
+                        tranquilidade e beleza em uma área extremamente bem localizada, a 
+                        pouco mais de 25km de Fortaleza.
+                    </p>
+                </div>
+
+                <p class="about-cta">
+                    <strong>Saiba mais sobre essa casa incrível na Prainha, em Aquiraz. Cadastre-se.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="waves-decoration">
+        <img src="8.png" alt="Ondas decorativas">
+    </div>
+
+    <!-- Seção de Vídeo -->
+    <section class="video-section">
+        <div class="wave-decoration-top">
+            <img src="491908_1_170852_628915231381.png" alt="">
+        </div>
+        
+        <div class="video-container">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/XE0eTs9SndY?start=1&rel=0&modestbranding=1" 
+                    title="Mansão triplex na Prainha, Aquiraz" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div class="wave-decoration-bottom">
+            <img src="491908_1_170852_628915231381_1.png" alt="">
+        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- NOVAS SEÇÕES ADICIONADAS -->
+    <!-- ============================================= -->
+
+    <!-- Seção O Paraíso -->
+    <section class="paradise-section">
+        <div class="paradise-container">
+            <div class="paradise-content">
+                <h2 class="paradise-title">
+                    O paraíso pode ser ainda<br>
+                    <span class="paradise-highlight">melhor do que você imaginou</span>
+                </h2>
+            </div>
+
+            <div class="paradise-carousel-wrapper">
+                <div class="paradise-carousel-container">
+                    <button class="paradise-nav-btn prev-paradise" onclick="moveParadiseCarousel(-1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <div class="paradise-carousel-track">
+                        <div class="paradise-carousel-slide active-paradise-slide">
+                            <img src="9.jpg" alt="Vista aérea da propriedade">
+                        </div>
+                        <div class="paradise-carousel-slide">
+                            <img src="10.jpg" alt="Sala de jantar com luminárias">
+                        </div>
+                        <div class="paradise-carousel-slide">
+                            <img src="11.jpg" alt="Sala de estar ampla">
+                        </div>
+                        <div class="paradise-carousel-slide">
+                            <img src="12.jpg" alt="Sala de TV moderna">
+                        </div>
+                        <div class="paradise-carousel-slide">
+                            <img src="13.jpg" alt="Quarto aconchegante">
+                        </div>
+                    </div>
+
+                    <button class="paradise-nav-btn next-paradise" onclick="moveParadiseCarousel(1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Casa de Praia -->
+    <section class="beach-house-section">
+        <div class="beach-leaf-decoration-right">
+            <img src="14.png" alt="Decoração folha">
+        </div>
+        
+        <div class="beach-house-container">
+            <div class="green-side-decoration"></div>
+            
+            <div class="beach-carousel-wrapper">
+                <div class="beach-carousel-container">
+                    <button class="beach-nav-btn prev-beach" onclick="moveBeachCarousel(-1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <div class="beach-carousel-track">
+                        <div class="beach-carousel-slide active-beach-slide">
+                            <img src="491908_1_508368759593.jpg" alt="Quarto com decoração suave">
+                        </div>
+                        <div class="beach-carousel-slide">
+                            <img src="491908_1_508363006231.jpg" alt="Quarto king size">
+                        </div>
+                        <div class="beach-carousel-slide">
+                            <img src="18.jpg" alt="Mesa posta na varanda com vista mar">
+                        </div>
+                        <div class="beach-carousel-slide">
+                            <img src="19.jpg" alt="Quarto infantil com painel de TV">
+                        </div>
+                        <div class="beach-carousel-slide">
+                            <img src="21.jpg" alt="Suíte master com iluminação ambiente">
+                        </div>
+                        <div class="beach-carousel-slide">
+                            <img src="29.jpg" alt="Quarto com cortinas cinza">
+                        </div>
+                        <div class="beach-carousel-slide">
+                            <img src="30.jpg" alt="Spa com hidromassagem">
+                        </div>
+                    </div>
+
+                    <button class="beach-nav-btn next-beach" onclick="moveBeachCarousel(1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="beach-content">
+                <h2 class="beach-title">
+                    Casa de praia tem que <span class="beach-highlight">ser casa</span>
+                </h2>
+                
+                <div class="beach-description">
+                    <p>
+                        Nada de flats e pequenos apartamentos, mas um espaço com área privativa, 
+                        cercada de verde e piscina particular.
+                    </p>
+                    <p>
+                        O imóvel possui 14.000m², localizado na Praia do Japão, na Prainha, com cerca 
+                        de 200m acima do nível do mar, proporcionando uma das mais encantadora vista de 
+                        toda a região!
+                    </p>
+                </div>
+
+                <div class="leaf-decoration">
+                    <svg width="50" height="50" viewBox="0 0 120 120" fill="none">
+                        <path d="M60 10 Q 80 30, 80 60 T 60 110" stroke="#B8A76F" stroke-width="2" fill="none"/>
+                        <path d="M60 20 Q 70 35, 65 50" stroke="#B8A76F" stroke-width="1.5" fill="none"/>
+                        <path d="M60 40 Q 70 50, 68 65" stroke="#B8A76F" stroke-width="1.5" fill="none"/>
+                        <path d="M60 60 Q 72 70, 70 85" stroke="#B8A76F" stroke-width="1.5" fill="none"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- FIM DAS NOVAS SEÇÕES -->
+    <!-- ============================================= -->
+
+    <!-- Seção Nossas Acomodações -->
+    <section class="accommodations-section">
+        <div class="accommodations-container">
+            <p class="accommodations-subtitle">Nossas Acomodações</p>
+            
+            <h2 class="accommodations-title">TRIPLEX COM VISTA MAR</h2>
+            
+            <p class="accommodations-description">
+                Com 727,36m² de área construída, o diferencial desta propriedade é a localização do terreno 
+                na Praia do Japão, Prainha, e com cerca de 200m acima do nível do mar, ele proporciona uma 
+                das mais encantadora vista de toda a região.
+            </p>
+
+            <div class="accommodations-carousel">
+                <div class="accommodations-track">
+                    <div class="accommodations-slide active-slide">
+                        <img src="15.jpg" alt="Casa iluminada ao entardecer">
+                    </div>
+                    <div class="accommodations-slide">
+                        <img src="16.jpg" alt="Mesa posta na varanda com vista mar">
+                    </div>
+                    <div class="accommodations-slide">
+                        <img src="17.jpg" alt="Piscina com área gourmet">
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-wrapper">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>O que está incluso?</span>
+                        <svg class="accordion-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ul class="amenities-list">
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                7 quartos, sendo 5 suítes e 1 suíte master
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Suíte master na cobertura com área gourmet, jacuzzi e vista mar
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Cozinha americana
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Dependência
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Deck com piscina e uma cascata, churrasqueira e forno.
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Amplo estacionamento
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Cobertura -->
+    <section class="cobertura-section">
+        <div class="cobertura-container">
+            <h2 class="cobertura-title">COBERTURA</h2>
+            
+            <p class="cobertura-description">
+                Cobertura com <em>solarium</em> e duas suítes master, ambas com banheira, além de amplo 
+                espaço gourmet com jacuzzi, sauna e vista mar.
+            </p>
+
+            <div class="cobertura-carousel">
+                <div class="cobertura-track">
+                    <div class="cobertura-slide active-cobertura-slide">
+                        <img src="22.jpg" alt="Banheira com azulejos verdes">
+                    </div>
+                    <div class="cobertura-slide">
+                        <img src="23.jpg" alt="Lustres rústicos suspensos">
+                    </div>
+                    <div class="cobertura-slide">
+                        <img src="30.jpg" alt="Spa com hidromassagem">
+                    </div>
+                    <div class="cobertura-slide">
+                        <img src="20.jpg" alt="Banheiro moderno com banheira de madeira">
+                    </div>
+                    <div class="cobertura-slide">
+                        <img src="21.jpg" alt="Suíte master com iluminação ambiente">
+                    </div>
+                    <div class="cobertura-slide">
+                        <img src="16.jpg" alt="Mesa posta na varanda com vista mar">
+                    </div>
+                    <div class="cobertura-slide">
+                        <img src="19.jpg" alt="Quarto infantil com painel de TV">
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-wrapper">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>O que está incluso?</span>
+                        <svg class="accordion-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ul class="amenities-list">
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                2 suítes com banheira
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Área gourmet
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Churrasqueira
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Sauna
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Mesas de jogos
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Piso Superior -->
+    <section class="piso-superior-section">
+        <div class="piso-superior-container">
+            <h2 class="piso-superior-title">PISO SUPERIOR</h2>
+            
+            <p class="piso-superior-description">
+                Ambiente com ampla sala de estar com TV e quatro quartos, sendo duas suítes.
+            </p>
+
+            <div class="piso-superior-carousel">
+                <div class="piso-superior-track">
+                    <div class="piso-superior-slide active-piso-slide">
+                        <img src="27.jpg" alt="Escada com iluminação LED">
+                    </div>
+                    <div class="piso-superior-slide">
+                        <img src="28.jpg" alt="Quarto bege claro">
+                    </div>
+                    <div class="piso-superior-slide">
+                        <img src="29.jpg" alt="Quarto com cortinas cinza">
+                    </div>
+                    <div class="piso-superior-slide">
+                        <img src="12.jpg" alt="Sala de TV moderna">
+                    </div>
+                    <div class="piso-superior-slide">
+                        <img src="13.jpg" alt="Quarto aconchegante">
+                    </div>
+                    <div class="piso-superior-slide">
+                        <img src="26.jpg" alt="Sala com cadeira suspensa">
+                    </div>
+                    <div class="piso-superior-slide">
+                        <img src="11.jpg" alt="Sala de estar ampla">
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-wrapper">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>O que está incluso?</span>
+                        <svg class="accordion-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ul class="amenities-list">
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                4 quartos, sendo 2 suítes
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Ampla sala de estar com TV
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Vista mar
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Cadeira de suspensa
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Térreo -->
+    <section class="terreo-section">
+        <div class="terreo-container">
+            <h2 class="terreo-title">TÉRREO</h2>
+            
+            <p class="terreo-description">
+                No térreo é onde encontramos a entrada do paraíso.
+            </p>
+
+            <div class="terreo-carousel">
+                <div class="terreo-track">
+                    <div class="terreo-slide active-terreo-slide">
+                        <img src="31.jpg" alt="Box de banheiro com mármore">
+                    </div>
+                    <div class="terreo-slide">
+                        <img src="32.jpg" alt="Banheiro completo com banheira">
+                    </div>
+                    <div class="terreo-slide">
+                        <img src="33.jpg" alt="Sala de jantar rústica">
+                    </div>
+                    <div class="terreo-slide">
+                        <img src="34.jpg" alt="Cozinha moderna com azulejos decorativos">
+                    </div>
+                    <div class="terreo-slide">
+                        <img src="10.jpg" alt="Sala de jantar com luminárias">
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-wrapper">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>O que está incluso?</span>
+                        <svg class="accordion-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <ul class="amenities-list">
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Cozinha americana
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Suíte reversível
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Sala de jantar
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Redário
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Amplo estacionamento
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Deck com piscina, churrasqueira e forno
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Jardim
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Final - Cadastre-se com Corretor -->
+    <section class="final-cta-section">
+        <div class="final-cta-container">
+            <div class="final-form-wrapper">
+                <h2 class="final-cta-title">CADASTRE-SE</h2>
+                <p class="final-cta-subtitle">CADASTRE-SE PARA MELHORES<br>INFORMAÇÕES</p>
+                
+                <form class="final-form" id="finalForm">
+                    <div class="final-form-group">
+                        <input type="text" class="final-input" placeholder="Nome" required>
+                    </div>
+                    <div class="final-form-group">
+                        <input type="tel" class="final-input" placeholder="* Telefone" required>
+                    </div>
+                    <div class="final-form-group">
+                        <input type="email" class="final-input" placeholder="* E-mail" required>
+                    </div>
+                    <button type="submit" class="final-submit-btn">Enviar!</button>
+                </form>
+
+                <div class="broker-info">
+                    <h3 class="broker-name">LUIS SEGUNDO</h3>
+                    <p class="broker-creci">CORRETOR DE IMÓVEIS - CRECI 9618</p>
+                </div>
+            </div>
+
+            <div class="broker-image-wrapper">
+                <img src="35.png" alt="Luis Segundo - Corretor de Imóveis" class="broker-image">
+            </div>
+        </div>
+
+        <div class="final-footer">
+            <p>NUNCA VOU ESTAR OCUPADO PARA RECEBER UMA INDICAÇÃO SUA.</p>
+        </div>
+    </section>
+
+    <!-- Seção de Localização -->
+    <section class="location-section">
+        <div class="location-container">
+            <h2 class="location-title">Localização</h2>
+            
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.3365447089943!2d-38.39115492404286!3d-3.8974736433932556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c748c0a5b6a6a9%3A0x7e8c9a0b8d6c7e5f!2sR.%20Fernanda%20de%20Brito%2C%20156%20-%20Prainha%2C%20Aquiraz%20-%20CE%2C%2061700-000!5e0!3m2!1spt-BR!2sbr!4v1735413600000!5m2!1spt-BR!2sbr&markers=color:red%7C-3.8974736,-38.3911549" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Localização Mansão Guerreiro">
+                </iframe>
+            </div>
+
+            <div class="address-info">
+                <p class="address-name">Mansão Guerreiro</p>
+                <p class="address-text">
+                    Rua Fernanda de Brito, 156 - Prainha,<br>
+                    Aquiraz, Ceará / CEP 61.700-000
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé Final -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="2.png" alt="RE/MAX Seu Imóvel" class="footer-logo-img">
+            </div>
+
+            <div class="footer-info">
+                <h3 class="footer-company-name">RE/MAX Seu Imóvel</h3>
+                <p class="footer-address">
+                    Avenida Washington Soares, 8660 B<br>
+                    Messejana, Fortaleza - CE, 60841-032
+                </p>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-copyright">
+                <p>Copyright © Remax Seu Imóvel – Todos os direitos reservados.</p>
+            </div>
+
+            <div class="footer-privacy">
+                <a href="https://web.seuimovel.com.br/termos-e-politicas" class="privacy-link" target="_blank" rel="noopener noreferrer">Acessar termos e políticas</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="https://api.whatsapp.com/send/?phone=558598118888&text&type=phone_number&app_absent=0" 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       aria-label="Fale conosco pelo WhatsApp">
+        <svg width="40" height="40" viewBox="0 0 32 32" fill="white">
+            <path d="M16 0C7.164 0 0 7.163 0 16c0 2.816.736 5.464 2.014 7.764L0 32l8.409-2.004A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm.001 29.455c-2.468 0-4.854-.675-6.919-1.948l-.496-.295-5.145 1.226 1.295-4.736-.324-.514A13.389 13.389 0 012.545 16C2.545 8.554 8.555 2.545 16 2.545S29.455 8.554 29.455 16 23.446 29.455 16.001 29.455zm7.375-10.062c-.404-.202-2.389-1.178-2.759-1.312-.371-.135-.641-.202-.911.202-.27.404-1.046 1.312-1.282 1.582-.236.27-.472.303-.876.101-.404-.202-1.706-.629-3.249-2.005-1.202-1.07-2.013-2.392-2.249-2.796-.236-.404-.025-.623.177-.824.182-.181.404-.472.606-.708.202-.236.27-.404.404-.674.135-.27.068-.506-.034-.708-.101-.202-.911-2.196-1.248-3.006-.328-.788-.662-.681-.911-.694-.236-.012-.506-.015-.776-.015s-.708.101-1.079.506c-.371.404-1.416 1.381-1.416 3.369s1.449 3.908 1.651 4.178c.202.27 2.852 4.354 6.911 6.107.965.417 1.719.666 2.306.853.969.308 1.85.264 2.547.16.777-.116 2.389-.977 2.726-1.92.337-.943.337-1.751.236-1.92-.101-.169-.371-.27-.776-.472z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Máscara de telefone
+        const phoneInput = document.querySelector('input[type="tel"]');
+        const errorIcon = document.querySelector('.error-icon');
+        
+        if (phoneInput && errorIcon) {
+            phoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                
+                if (value.length > 11) {
+                    value = value.substring(0, 11);
+                }
+                
+                if (value.length <= 10) {
+                    value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+                } else {
+                    value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+                }
+                
+                e.target.value = value;
+                
+                const digitsOnly = e.target.value.replace(/\D/g, '');
+                if (digitsOnly.length > 0 && digitsOnly.length < 10) {
+                    errorIcon.style.display = 'block';
+                    e.target.classList.add('error');
+                } else if (digitsOnly.length >= 10 && digitsOnly.length <= 11) {
+                    errorIcon.style.display = 'none';
+                    e.target.classList.remove('error');
+                } else {
+                    errorIcon.style.display = 'none';
+                    e.target.classList.remove('error');
+                }
+            });
+        }
+
+        // Validação do formulário
+        const leadForm = document.getElementById('leadForm');
+        if (leadForm) {
+            leadForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Formulário enviado com sucesso!');
+            });
+        }
+
+        // Carrossel Casa de Praia
+        let currentBeachSlide = 0;
+        const beachSlides = document.querySelectorAll('.beach-carousel-slide');
+        const totalBeachSlides = beachSlides.length;
+
+        function moveBeachCarousel(direction) {
+            if (totalBeachSlides === 0) return;
+            
+            beachSlides[currentBeachSlide].classList.remove('active-beach-slide');
+            
+            currentBeachSlide += direction;
+            
+            if (currentBeachSlide < 0) {
+                currentBeachSlide = totalBeachSlides - 1;
+            } else if (currentBeachSlide >= totalBeachSlides) {
+                currentBeachSlide = 0;
+            }
+            
+            beachSlides[currentBeachSlide].classList.add('active-beach-slide');
+        }
+
+        if (totalBeachSlides > 0) {
+            setInterval(() => moveBeachCarousel(1), 5000);
+        }
+
+        // Carrossel Paraíso
+        let currentParadiseSlide = 0;
+        const paradiseSlides = document.querySelectorAll('.paradise-carousel-slide');
+        const totalParadiseSlides = paradiseSlides.length;
+
+        function moveParadiseCarousel(direction) {
+            if (totalParadiseSlides === 0) return;
+            
+            paradiseSlides[currentParadiseSlide].classList.remove('active-paradise-slide');
+            
+            currentParadiseSlide += direction;
+            
+            if (currentParadiseSlide < 0) {
+                currentParadiseSlide = totalParadiseSlides - 1;
+            } else if (currentParadiseSlide >= totalParadiseSlides) {
+                currentParadiseSlide = 0;
+            }
+            
+            paradiseSlides[currentParadiseSlide].classList.add('active-paradise-slide');
+        }
+
+        if (totalParadiseSlides > 0) {
+            setInterval(() => moveParadiseCarousel(1), 3000);
+        }
+
+        // Carrossel de Acomodações (Auto-rotação)
+        let currentAccommodationSlide = 0;
+        const accommodationsSlides = document.querySelectorAll('.accommodations-slide');
+        const totalAccommodationsSlides = accommodationsSlides.length;
+
+        function rotateAccommodationsCarousel() {
+            if (totalAccommodationsSlides === 0) return;
+            
+            accommodationsSlides[currentAccommodationSlide].classList.remove('active-slide');
+            
+            currentAccommodationSlide = (currentAccommodationSlide + 1) % totalAccommodationsSlides;
+            
+            accommodationsSlides[currentAccommodationSlide].classList.add('active-slide');
+        }
+
+        if (totalAccommodationsSlides > 0) {
+            setInterval(rotateAccommodationsCarousel, 4000);
+        }
+
+        // Carrossel de Cobertura (Auto-rotação)
+        let currentCoberturaSlide = 0;
+        const coberturaSlides = document.querySelectorAll('.cobertura-slide');
+        const totalCoberturaSlides = coberturaSlides.length;
+
+        function rotateCoberturaCarousel() {
+            if (totalCoberturaSlides === 0) return;
+            
+            coberturaSlides[currentCoberturaSlide].classList.remove('active-cobertura-slide');
+            
+            currentCoberturaSlide = (currentCoberturaSlide + 1) % totalCoberturaSlides;
+            
+            coberturaSlides[currentCoberturaSlide].classList.add('active-cobertura-slide');
+        }
+
+        if (totalCoberturaSlides > 0) {
+            setInterval(rotateCoberturaCarousel, 4000);
+        }
+
+        // Carrossel de Piso Superior (Auto-rotação)
+        let currentPisoSlide = 0;
+        const pisoSlides = document.querySelectorAll('.piso-superior-slide');
+        const totalPisoSlides = pisoSlides.length;
+
+        function rotatePisoCarousel() {
+            if (totalPisoSlides === 0) return;
+            
+            pisoSlides[currentPisoSlide].classList.remove('active-piso-slide');
+            
+            currentPisoSlide = (currentPisoSlide + 1) % totalPisoSlides;
+            
+            pisoSlides[currentPisoSlide].classList.add('active-piso-slide');
+        }
+
+        if (totalPisoSlides > 0) {
+            setInterval(rotatePisoCarousel, 4000);
+        }
+
+        // Carrossel de Térreo (Auto-rotação)
+        let currentTerreoSlide = 0;
+        const terreoSlides = document.querySelectorAll('.terreo-slide');
+        const totalTerreoSlides = terreoSlides.length;
+
+        function rotateTerreoCarousel() {
+            if (totalTerreoSlides === 0) return;
+            
+            terreoSlides[currentTerreoSlide].classList.remove('active-terreo-slide');
+            
+            currentTerreoSlide = (currentTerreoSlide + 1) % totalTerreoSlides;
+            
+            terreoSlides[currentTerreoSlide].classList.add('active-terreo-slide');
+        }
+
+        if (totalTerreoSlides > 0) {
+            setInterval(rotateTerreoCarousel, 4000);
+        }
+
+        // Formulário Final
+        const finalForm = document.getElementById('finalForm');
+        if (finalForm) {
+            finalForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Obrigado pelo seu interesse! Em breve entraremos em contato.');
+            });
+        }
+
+        // Máscara de telefone para formulário final
+        const finalPhoneInput = document.querySelector('#finalForm input[type="tel"]');
+        
+        if (finalPhoneInput) {
+            finalPhoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                
+                if (value.length > 11) {
+                    value = value.substring(0, 11);
+                }
+                
+                if (value.length <= 10) {
+                    value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+                } else {
+                    value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+                }
+                
+                e.target.value = value;
+            });
+        }
+
+        // Accordion Toggle
+        function toggleAccordion(button) {
+            const accordionItem = button.parentElement;
+            const isActive = accordionItem.classList.contains('active');
+            
+            // Fechar todos os accordions
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Abrir o clicado se não estava ativo
+            if (!isActive) {
+                accordionItem.classList.add('active');
+            }
+        }
+
+        // Outros carrosséis e scripts do código original...
+    </script>
+</body>
+</html>
